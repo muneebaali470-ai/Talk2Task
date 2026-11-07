@@ -15,7 +15,20 @@ import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 from nltk import pos_tag, ne_chunk
+import streamlit as st
 
+@st.cache_resource
+def download_nltk_data():
+    nltk.download('punkt', quiet=True)
+    nltk.download('punkt_tab', quiet=True)
+    nltk.download('stopwords', quiet=True)
+    nltk.download('averaged_perceptron_tagger', quiet=True)
+    nltk.download('averaged_perceptron_tagger_eng', quiet=True)
+    nltk.download('maxent_ne_chunker', quiet=True)
+    nltk.download('maxent_ne_chunker_tab', quiet=True)
+    nltk.download('words', quiet=True)
+
+download_nltk_data()
 
 # ----------------------------------------------------------------------
 # One-time NLTK resource download (safe if already present)
